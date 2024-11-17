@@ -1,99 +1,108 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="dark">
+<html lang="pt-BR" class="theme-transition">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - School Gaming Platform</title>
+    <title>School Gaming Platform - Login</title>
+    
+    <!-- Tailwind e DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.6.0/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.7.3/dist/full.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Estilos customizados -->
+    <link href="/src/styles/theme.css" rel="stylesheet">
+    <link href="/src/styles/custom.css" rel="stylesheet">
 </head>
-<body class="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center p-4">
+<body class="min-h-screen bg-primary text-primary transition-colors duration-300">
+    <!-- Theme Toggle Button -->
     <div class="absolute top-4 right-4">
-        <button id="themeToggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden dark:block text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <button id="themeToggle" class="p-2 rounded-lg theme-transition hover:bg-secondary">
+            <!-- Sun Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden dark:block icon-color" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
             </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 block dark:hidden text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <!-- Moon Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 block dark:hidden icon-color" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
             </svg>
         </button>
     </div>
 
-    <div class="w-full max-w-md">
-        <div class="bg-white dark:bg-gray-800 shadow-xl rounded-lg p-8">
+    <!-- Login Container -->
+    <div class="w-full max-w-md mx-auto min-h-screen flex items-center justify-center px-4">
+        <div class="card w-full p-8 shadow-xl">
+            <!-- Header -->
             <div class="text-center mb-8">
-                <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">School Gaming Platform</h1>
-                <p class="text-gray-600 dark:text-gray-400">Entre para acessar sua Guilda</p>
+                <h1 class="text-3xl font-bold text-primary mb-2">School Gaming Platform</h1>
+                <p class="text-secondary">Entre para acessar sua Guilda</p>
             </div>
 
+            <!-- Error Message -->
+            <div id="errorMessage" class="hidden text-error text-sm text-center mb-4"></div>
+
+            <!-- Login Form -->
             <form id="loginForm" class="space-y-6">
-                <div id="errorMessage" class="hidden text-red-500 text-sm text-center mb-4"></div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Usuário
+                <!-- Username Field -->
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text text-primary">Usuário</span>
                     </label>
-                    <input 
-                        type="text" 
-                        id="username"
-                        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-game-primary focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-game-secondary"
-                        placeholder="Digite seu usuário"
-                    >
+                    <input type="text" 
+                           id="username" 
+                           class="input input-bordered w-full bg-input-background border-input-border text-primary"
+                           required />
                 </div>
 
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Senha
+                <!-- Password Field -->
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text text-primary">Senha</span>
                     </label>
-                    <input 
-                        type="password" 
-                        id="password"
-                        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-game-primary focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-game-secondary"
-                        placeholder="••••••••"
-                    >
+                    <input type="password" 
+                           id="password" 
+                           class="input input-bordered w-full bg-input-background border-input-border text-primary"
+                           required />
                 </div>
 
+                <!-- Remember Me and Forgot Password -->
                 <div class="flex items-center justify-between">
-                    <div class="flex items-center">
-                        <input 
-                            type="checkbox" 
-                            id="remember"
-                            class="h-4 w-4 text-game-primary focus:ring-game-primary border-gray-300 rounded dark:border-gray-600 dark:bg-gray-700"
-                        >
-                        <label for="remember" class="ml-2 block text-sm text-gray-700 dark:text-gray-300">
-                            Lembrar-me
-                        </label>
-                    </div>
-
-                    <a href="#" class="text-sm text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
+                    <label class="flex items-center">
+                        <input type="checkbox" 
+                               id="remember" 
+                               class="checkbox checkbox-primary mr-2" />
+                        <span class="text-secondary text-sm">Lembrar-me</span>
+                    </label>
+                    <a href="#" class="text-sm text-accent-primary hover:text-accent-secondary">
                         Esqueceu a senha?
                     </a>
                 </div>
 
-                <button 
-                    type="submit" 
-                    class="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors dark:focus:ring-offset-gray-800"
-                >
+                <!-- Submit Button -->
+                <button type="submit" 
+                        class="btn btn-primary w-full button-primary hover:opacity-90">
                     Entrar
                 </button>
             </form>
 
+            <!-- Register Link -->
             <div class="mt-6 text-center">
-                <p class="text-sm text-gray-600 dark:text-gray-400">
-                    Ainda não tem uma conta?
-                    <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
-                        Cadastre sua escola
-                    </a>
-                </p>
+                <span class="text-secondary">Ainda não tem uma conta?</span>
+                <a href="#" class="text-accent-primary hover:text-accent-secondary ml-1">
+                    Cadastre sua escola
+                </a>
             </div>
         </div>
     </div>
 
-    <div id="notification" class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 hidden">
+    <!-- Success Notification -->
+    <div id="notification" 
+         class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-success text-button-text px-6 py-3 rounded-lg shadow-lg z-50 hidden">
         Login realizado com sucesso!
     </div>
 
-    <script src="src/js/auth.js"></script>
-    <script src="src/js/darkMode.js"></script>
+    <!-- Scripts -->
+    <script src="/src/js/auth.js"></script>
+    <script src="/src/js/darkMode.js"></script>
+    <script src="/src/js/custom.js"></script>
 </body>
 </html>
