@@ -77,7 +77,7 @@ school-gaming-platform/
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/seu-usuario/school-gaming-platform.git
+git clone https://github.com/in100tiva/UX-UI-Code3.git
 
 Navegue até o diretório do projeto:
 
