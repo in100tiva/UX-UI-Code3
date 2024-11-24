@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guildas - School Gaming Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.7.3/dist/full.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../styles/custom.css">
 </head>
+
 <body class="bg-gray-50 dark:bg-gray-900 min-h-screen">
     <!-- Success Notification -->
     <div id="notification" class="hidden fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50">
@@ -15,7 +18,7 @@
 
     <div class="drawer lg:drawer-open">
         <input id="main-drawer" type="checkbox" class="drawer-toggle" />
-        
+
         <div class="drawer-content flex flex-col">
             <!-- Navbar -->
             <div class="navbar bg-white dark:bg-gray-800 shadow-lg">
@@ -144,111 +147,99 @@
 
         <!-- Sidebar -->
         <div class="drawer-side">
-          <label for="main-drawer" class="drawer-overlay"></label>
-          <aside class="bg-white dark:bg-gray-800 w-80 min-h-full border-r border-gray-200 dark:border-gray-700">
-              <div class="p-4">
-                  <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">School Gaming Platform</h2>
-                  <ul class="menu p-4 space-y-2">
-                      <li>
-                          <a href="dashboard.html" class="flex items-center text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
-                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                              </svg>
-                              <span>Dashboard</span>
-                          </a>
-                      </li>
-                      <li>
-                          <a href="guilds.html" class="flex items-center text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg active">
-                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                              </svg>
-                              <span>Guildas</span>
-                          </a>
-                      </li>
-                      <li>
-                          <a href="challenges.html" class="flex items-center text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
-                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                              </svg>
-                              <span>Desafios</span>
-                          </a>
-                      </li>
-                      <li>
-                          <a href="ranking.html" class="flex items-center text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
-                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                              </svg>
-                              <span>Ranking</span>
-                          </a>
-                      </li>
-                      <li>
-                          <a href="rewards.html" class="flex items-center text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
-                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
-                              </svg>
-                              <span>Recompensas</span>
-                          </a>
-                      </li>
-                  </ul>
-              </div>
-          </aside>
-      </div>
-  </div>
+            <label for="main-drawer" class="drawer-overlay"></label>
+            <aside class="bg-white dark:bg-gray-800 w-80 min-h-full border-r border-gray-200 dark:border-gray-700">
+                <div class="p-4">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">School Gaming Platform</h2>
+                    <ul class="menu p-4 space-y-2">
+                        <li>
+                            <a href="dashboard.html" class="flex items-center text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                </svg>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="guilds.html" class="flex items-center text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg active">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                                </svg>
+                                <span>Guildas</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="challenges.html" class="flex items-center text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                                </svg>
+                                <span>Desafios</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="ranking.html" class="flex items-center text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                                </svg>
+                                <span>Ranking</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="rewards.html" class="flex items-center text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                                </svg>
+                                <span>Recompensas</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
 
-  <!-- Create Guild Modal -->
-  <input type="checkbox" id="createGuildModal" class="modal-toggle" />
-  <div class="modal">
-      <div class="modal-box bg-white dark:bg-gray-800">
-          <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4">Criar Nova Guilda</h3>
-          <form id="createGuildForm" class="space-y-4">
-              <div class="form-control">
-                  <label class="label">
-                      <span class="label-text text-gray-900 dark:text-white">Nome da Guilda</span>
-                  </label>
-                  <input 
-                      type="text" 
-                      id="guildName" 
-                      placeholder="Digite o nome da guilda" 
-                      class="input input-bordered w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-white" 
-                      required 
-                  />
-              </div>
-              <div class="form-control">
-                  <label class="label">
-                      <span class="label-text text-gray-900 dark:text-white">Quantidade de Alunos</span>
-                  </label>
-                  <input 
-                      type="number" 
-                      id="studentsCount" 
-                      placeholder="Número de alunos" 
-                      min="1" 
-                      class="input input-bordered w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-white" 
-                      required 
-                  />
-              </div>
-              <div class="modal-action">
-                  <label for="createGuildModal" class="btn btn-ghost text-gray-900 dark:text-white">Cancelar</label>
-                  <button type="submit" class="btn bg-indigo-600 hover:bg-indigo-500 text-white border-none">Criar Guilda</button>
-              </div>
-          </form>
-      </div>
-      <label class="modal-backdrop" for="createGuildModal">Close</label>
-  </div>
+    <!-- Create Guild Modal -->
+    <input type="checkbox" id="createGuildModal" class="modal-toggle" />
+    <div class="modal">
+        <div class="modal-box bg-white dark:bg-gray-800">
+            <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4">Criar Nova Guilda</h3>
+            <form id="createGuildForm" class="space-y-4">
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text text-gray-900 dark:text-white">Nome da Guilda</span>
+                    </label>
+                    <input type="text" id="guildName" placeholder="Digite o nome da guilda" class="input input-bordered w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-white" required />
+                </div>
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text text-gray-900 dark:text-white">Quantidade de Alunos</span>
+                    </label>
+                    <input type="number" id="studentsCount" placeholder="Número de alunos" min="1" class="input input-bordered w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-white" required />
+                </div>
+                <div class="modal-action">
+                    <label for="createGuildModal" class="btn btn-ghost text-gray-900 dark:text-white">Cancelar</label>
+                    <button type="submit" class="btn bg-indigo-600 hover:bg-indigo-500 text-white border-none">Criar Guilda</button>
+                </div>
+            </form>
+        </div>
+        <label class="modal-backdrop" for="createGuildModal">Close</label>
+    </div>
 
-  <!-- Edit Guild Modal -->
-  <input type="checkbox" id="editGuildModal" class="modal-toggle" />
-  <div class="modal">
-      <div class="modal-box bg-white dark:bg-gray-800">
-          <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4">Editar Guilda</h3>
-          <form id="editGuildForm" class="space-y-4">
-              <!-- Content will be populated by JavaScript -->
-          </form>
-      </div>
-      <label class="modal-backdrop" for="editGuildModal">Close</label>
-  </div>
+    <!-- Edit Guild Modal -->
+    <input type="checkbox" id="editGuildModal" class="modal-toggle" />
+    <div class="modal">
+        <div class="modal-box bg-white dark:bg-gray-800">
+            <h3 class="font-bold text-lg text-gray-900 dark:text-white mb-4">Editar Guilda</h3>
+            <form id="editGuildForm" class="space-y-4">
+                <!-- Content will be populated by JavaScript -->
+            </form>
+        </div>
+        <label class="modal-backdrop" for="editGuildModal">Close</label>
+    </div>
 
-  <script src="../js/darkMode.js"></script>
-  <script src="../js/guilds.js"></script>
-  <script src="../js/custom.js"></script>
+    <script src="../js/darkMode.js"></script>
+    <script src="../js/guilds.js"></script>
+    <script src="../js/custom.js"></script>
 </body>
+
 </html>

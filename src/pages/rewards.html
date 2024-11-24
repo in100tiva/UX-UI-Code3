@@ -6,6 +6,8 @@
     <title>Recompensas - School Gaming Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.7.3/dist/full.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../styles/custom.css">
+    <link rel="stylesheet" href="../styles/theme.css">
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 min-h-screen">
     <!-- Success Notification -->
@@ -65,16 +67,16 @@
             <div class="p-6">
                 <!-- Reward Categories -->
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
-                    <button onclick="filterRewards('all')" class="btn btn-lg bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <button onclick="filterRewards('all')" class="btn btn-lg text-gray-900 dark:text-white bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600">
                         Todas
                     </button>
-                    <button onclick="filterRewards('digital')" class="btn btn-lg bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <button onclick="filterRewards('digital')" class="btn btn-lg text-gray-900 dark:text-white bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600">
                         Digitais
                     </button>
-                    <button onclick="filterRewards('physical')" class="btn btn-lg bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <button onclick="filterRewards('physical')" class="btn btn-lg text-gray-900 dark:text-white bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600">
                         Físicas
                     </button>
-                    <button onclick="filterRewards('exclusive')" class="btn btn-lg bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <button onclick="filterRewards('exclusive')" class="btn btn-lg text-gray-900 dark:text-white bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600">
                         Exclusivas
                     </button>
                 </div>
@@ -169,8 +171,9 @@
                 <!-- Content will be populated by JavaScript -->
             </div>
             <div class="modal-action">
-                <label for="redeemModal" class="btn btn-ghost text-gray-900 dark:text-white">Cancelar</label>
-                <button onclick="confirmRedeem()" class="btn bg-indigo-600 hover:bg-indigo-500 text-white border-none">Confirmar</button>
+                <label for="redeemModal" class="btn btn-ghost text-gray-900 dark:text-white">
+                    <label for="redeemModal" class="btn btn-ghost text-gray-900 dark:text-white">Cancelar</label>
+                <button onclick="confirmRedeem()" class="btn bg-indigo-600 hover:bg-indigo-500 text-white border-none dark:bg-indigo-500 dark:hover:bg-indigo-400">Confirmar</button>
             </div>
         </div>
         <label class="modal-backdrop" for="redeemModal">Close</label>

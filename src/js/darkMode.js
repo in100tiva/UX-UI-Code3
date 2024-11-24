@@ -1,44 +1,31 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Elementos do DOM
-    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeToggle = document.getElementById('themeToggle');
     const sunIcon = document.querySelector('.dark\\:block');
     const moonIcon = document.querySelector('.block');
-    
-    // Função para obter o tema atual do sistema
-    const getSystemTheme = () => {
+    const html = document.documentElement;
+
+    // Função para obter preferência do sistema
+    const getSystemPreference = () => {
         return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     };
-    
-    // Função para obter o tema salvo ou usar o tema do sistema como padrão
-    const getSavedTheme = () => {
+
+    // Função para obter tema atual
+    const getCurrentTheme = () => {
+        // Verifica primeiro no localStorage
         const savedTheme = localStorage.getItem('theme');
-        return savedTheme || getSystemTheme();
-    };
-    
-    // Função para salvar o tema no localStorage
-    const saveTheme = (theme) => {
-        localStorage.setItem('theme', theme);
-    };
-    
-    // Função para aplicar o tema
-    const applyTheme = (theme) => {
-        // Remove qualquer classe de tema existente
-        document.documentElement.classList.remove('light', 'dark');
+        if (savedTheme) {
+            return savedTheme;
+        }
         
-        // Adiciona a classe do tema atual
-        document.documentElement.classList.add(theme);
-        
-        // Atualiza os ícones
-        updateThemeIcons(theme);
-        
-        // Dispara evento de mudança de tema
-        document.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme } }));
+        // Se não houver tema salvo, usa a preferência do sistema
+        return getSystemPreference();
     };
-    
-    // Função para atualizar os ícones do botão de tema
-    const updateThemeIcons = (theme) => {
+
+    // Função para atualizar ícones do botão de tema
+    const updateThemeIcons = (isDark) => {
         if (sunIcon && moonIcon) {
-            if (theme === 'dark') {
+            if (isDark) {
                 sunIcon.classList.remove('hidden');
                 moonIcon.classList.add('hidden');
             } else {
@@ -47,64 +34,115 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     };
-    
-    // Função para alternar o tema
+
+    // Função para atualizar estilos dos botões de filtro
+    const updateFilterButtons = () => {
+        const activeFilter = document.querySelector('.btn[onclick^="filterRewards"].active');
+        const allFilterButtons = document.querySelectorAll('.btn[onclick^="filterRewards"]');
+
+        allFilterButtons.forEach(button => {
+            if (button === activeFilter) {
+                button.classList.remove('bg-white', 'dark:bg-gray-800', 'text-gray-900', 'dark:text-white');
+                button.classList.add('bg-indigo-600', 'dark:bg-indigo-500', 'text-white');
+            } else {
+                button.classList.remove('bg-indigo-600', 'dark:bg-indigo-500', 'text-white');
+                button.classList.add('bg-white', 'dark:bg-gray-800', 'text-gray-900', 'dark:text-white');
+            }
+        });
+    };
+
+    // Função para aplicar tema
+    const applyTheme = (theme) => {
+        // Remove qualquer classe de tema existente
+        html.classList.remove('light', 'dark');
+        
+        // Adiciona a classe do novo tema
+        html.classList.add(theme);
+        
+        // Atualiza localStorage
+        localStorage.setItem('theme', theme);
+        
+        // Atualiza ícones
+        updateThemeIcons(theme === 'dark');
+        
+        // Atualiza estilos dos botões de filtro
+        updateFilterButtons();
+
+        // Dispara evento customizado de mudança de tema
+        document.dispatchEvent(new CustomEvent('themeChanged', { 
+            detail: { theme } 
+        }));
+    };
+
+    // Função para alternar tema
     const toggleTheme = () => {
-        const currentTheme = getSavedTheme();
+        const currentTheme = getCurrentTheme();
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        // Adiciona classe de transição antes da mudança
+        html.classList.add('theme-transition');
         
         // Aplica o novo tema
         applyTheme(newTheme);
-        // Salva a preferência
-        saveTheme(newTheme);
         
-        // Adiciona classe de transição suave
-        document.documentElement.classList.add('theme-transition');
-        
-        // Remove a classe de transição após a conclusão
+        // Remove classe de transição após a animação
         setTimeout(() => {
-            document.documentElement.classList.remove('theme-transition');
+            html.classList.remove('theme-transition');
         }, 300);
     };
-    
-    // Observador para mudanças na preferência de tema do sistema
+
+    // Observador de mudanças na preferência do sistema
     const watchSystemThemeChanges = () => {
         const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
         
         mediaQuery.addEventListener('change', (e) => {
             // Só atualiza automaticamente se não houver preferência salva
             if (!localStorage.getItem('theme')) {
-                const newTheme = e.matches ? 'dark' : 'light';
-                applyTheme(newTheme);
+                applyTheme(e.matches ? 'dark' : 'light');
             }
         });
     };
-    
+
     // Função de inicialização
     const initializeTheme = () => {
         // Aplica o tema inicial
-        const initialTheme = getSavedTheme();
+        const initialTheme = getCurrentTheme();
         applyTheme(initialTheme);
         
         // Configura o observador de mudanças do sistema
         watchSystemThemeChanges();
         
         // Adiciona listener para o botão de tema
-        if (themeToggleBtn) {
-            themeToggleBtn.addEventListener('click', toggleTheme);
+        if (themeToggle) {
+            themeToggle.addEventListener('click', toggleTheme);
         }
         
         // Adiciona classe de transição inicial
-        document.documentElement.classList.add('theme-transition');
+        html.classList.add('theme-transition');
     };
-    
+
+    // Listeners para eventos relacionados a mudanças de tema
+    document.addEventListener('themeChanged', () => {
+        updateFilterButtons();
+    });
+
+    // Listener para quando o DOM for modificado (para botões adicionados dinamicamente)
+    const observer = new MutationObserver(() => {
+        updateFilterButtons();
+    });
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+
     // Exporta funções para uso global
     window.themeManager = {
         toggle: toggleTheme,
-        applyTheme: applyTheme,
-        getCurrentTheme: getSavedTheme
+        apply: applyTheme,
+        getCurrentTheme: getCurrentTheme
     };
-    
+
     // Inicializa o sistema de temas
     initializeTheme();
 });
