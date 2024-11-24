@@ -1,0 +1,129 @@
+/* Theme Base Colors and Variables */
+:root {
+  /* Light Theme Colors */
+  --light-primary-bg: #ffffff;
+  --light-secondary-bg: #f3f4f6;
+  --light-accent-primary: #4f46e5;
+  --light-accent-secondary: #818cf8;
+  --light-text-primary: #111827;
+  --light-text-secondary: #374151;
+  --light-border: #e5e7eb;
+  --light-card-bg: #ffffff;
+  --light-hover: #f9fafb;
+  --light-button-text: #ffffff;
+  --light-button-hover: #4338ca;
+  --light-disabled: #9ca3af;
+  --light-success: #10b981;
+  --light-error: #ef4444;
+  --light-warning: #f59e0b;
+  --light-info: #3b82f6;
+  --light-shadow: rgba(0, 0, 0, 0.1);
+  
+  /* Dark Theme Colors */
+  --dark-primary-bg: #111827;
+  --dark-secondary-bg: #1f2937;
+  --dark-accent-primary: #818cf8;
+  --dark-accent-secondary: #4f46e5;
+  --dark-text-primary: #f9fafb;
+  --dark-text-secondary: #d1d5db;
+  --dark-border: #374151;
+  --dark-card-bg: #1f2937;
+  --dark-hover: #374151;
+  --dark-button-text: #ffffff;
+  --dark-button-hover: #6366f1;
+  --dark-disabled: #4b5563;
+  --dark-success: #34d399;
+  --dark-error: #f87171;
+  --dark-warning: #fcd34d;
+  --dark-info: #60a5fa;
+  --dark-shadow: rgba(0, 0, 0, 0.25);
+
+  /* Component-specific colors */
+  --light-input-bg: #ffffff;
+  --light-input-border: #d1d5db;
+  --light-input-text: #111827;
+  --light-input-placeholder: #9ca3af;
+  --light-dropdown-bg: #ffffff;
+  --light-dropdown-hover: #f3f4f6;
+  --light-modal-bg: #ffffff;
+  --light-modal-overlay: rgba(0, 0, 0, 0.5);
+  --light-notification-bg: #ffffff;
+
+  --dark-input-bg: #1f2937;
+  --dark-input-border: #4b5563;
+  --dark-input-text: #f9fafb;
+  --dark-input-placeholder: #6b7280;
+  --dark-dropdown-bg: #1f2937;
+  --dark-dropdown-hover: #374151;
+  --dark-modal-bg: #1f2937;
+  --dark-modal-overlay: rgba(0, 0, 0, 0.7);
+  --dark-notification-bg: #1f2937;
+}
+
+/* Light Theme Default */
+:root {
+  --bg-primary: var(--light-primary-bg);
+  --bg-secondary: var(--light-secondary-bg);
+  --accent-primary: var(--light-accent-primary);
+  --accent-secondary: var(--light-accent-secondary);
+  --text-primary: var(--light-text-primary);
+  --text-secondary: var(--light-text-secondary);
+  --border-color: var(--light-border);
+  --card-bg: var(--light-card-bg);
+  --hover-bg: var(--light-hover);
+  --button-text: var(--light-button-text);
+  --button-hover: var(--light-button-hover);
+  --disabled: var(--light-disabled);
+  --success: var(--light-success);
+  --error: var(--light-error);
+  --warning: var(--light-warning);
+  --info: var(--light-info);
+  --shadow: var(--light-shadow);
+  --input-bg: var(--light-input-bg);
+  --input-border: var(--light-input-border);
+  --input-text: var(--light-input-text);
+  --input-placeholder: var(--light-input-placeholder);
+  --dropdown-bg: var(--light-dropdown-bg);
+  --dropdown-hover: var(--light-dropdown-hover);
+  --modal-bg: var(--light-modal-bg);
+  --modal-overlay: var(--light-modal-overlay);
+  --notification-bg: var(--light-notification-bg);
+}
+
+/* Dark Theme Class */
+.dark {
+  --bg-primary: var(--dark-primary-bg);
+  --bg-secondary: var(--dark-secondary-bg);
+  --accent-primary: var(--dark-accent-primary);
+  --accent-secondary: var(--dark-accent-secondary);
+  --text-primary: var(--dark-text-primary);
+  --text-secondary: var(--dark-text-secondary);
+  --border-color: var(--dark-border);
+  --card-bg: var(--dark-card-bg);
+  --hover-bg: var(--dark-hover);
+  --button-text: var(--dark-button-text);
+  --button-hover: var(--dark-button-hover);
+  --disabled: var(--dark-disabled);
+  --success: var(--dark-success);
+  --error: var(--dark-error);
+  --warning: var(--dark-warning);
+  --info: var(--dark-info);
+  --shadow: var(--dark-shadow);
+  --input-bg: var(--dark-input-bg);
+  --input-border: var(--dark-input-border);
+  --input-text: var(--dark-input-text);
+  --input-placeholder: var(--dark-input-placeholder);
+  --dropdown-bg: var(--dark-dropdown-bg);
+  --dropdown-hover: var(--dark-dropdown-hover);
+  --modal-bg: var(--dark-modal-bg);
+  --modal-overlay: var(--dark-modal-overlay);
+  --notification-bg: var(--dark-notification-bg);
+}
+
+/* Theme Transition */
+.theme-transition * {
+  transition: background-color 0.3s ease,
+              color 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
