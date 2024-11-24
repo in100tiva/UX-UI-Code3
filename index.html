@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="dark">
-
+<html lang="pt-BR" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - School Gaming Platform</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.7.3/dist/full.css" rel="stylesheet" type="text/css" />
+    <title>School Gaming Platform - Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="src/styles/custom.css">
+    <link rel="stylesheet" href="src/styles/responsive.css">
     <link rel="stylesheet" href="src/styles/theme.css">
 </head>
+<body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex items-center justify-center">
+    <!-- Notification Component -->
+    <div id="notification" class="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 hidden">
+        <span id="notificationMessage"></span>
+    </div>
 
-<body class="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center p-4">
+    <!-- Toggle Theme -->
     <div class="absolute top-4 right-4">
-        <button id="themeToggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+        <button id="themeToggle" class="btn btn-ghost btn-circle">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden dark:block text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
             </svg>
@@ -23,50 +28,56 @@
         </button>
     </div>
 
+    <!-- Login Card -->
     <div class="w-full max-w-md">
         <div class="bg-white dark:bg-gray-800 shadow-xl rounded-lg p-8">
+            <!-- Header -->
             <div class="text-center mb-8">
                 <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">School Gaming Platform</h1>
                 <p class="text-gray-600 dark:text-gray-400">Entre para acessar sua Guilda</p>
             </div>
 
+            <!-- Error Message -->
+            <div id="errorMessage" class="hidden text-red-500 text-sm text-center mb-4"></div>
+
+            <!-- Login Form -->
             <form id="loginForm" class="space-y-6">
-                <div id="errorMessage" class="hidden text-red-500 text-sm text-center mb-4"></div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Usuário
+                <!-- Username Input -->
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text text-gray-900 dark:text-white">Usuário</span>
                     </label>
-                    <input type="text" id="username" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-game-primary focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-game-secondary" placeholder="Digite seu usuário">
+                    <input type="text" id="username" class="input input-bordered w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-white" required />
                 </div>
 
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Senha
+                <!-- Password Input -->
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text text-gray-900 dark:text-white">Senha</span>
                     </label>
-                    <input type="password" id="password" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-game-primary focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:focus:ring-game-secondary" placeholder="••••••••">
+                    <input type="password" id="password" class="input input-bordered w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-white" required />
                 </div>
 
+                <!-- Remember Me & Forgot Password -->
                 <div class="flex items-center justify-between">
                     <div class="flex items-center">
-                        <input type="checkbox" id="remember" class="h-4 w-4 text-game-primary focus:ring-game-primary border-gray-300 rounded dark:border-gray-600 dark:bg-gray-700">
-                        <label for="remember" class="ml-2 block text-sm text-gray-700 dark:text-gray-300">
-                            Lembrar-me
-                        </label>
+                        <input type="checkbox" id="remember" class="checkbox checkbox-primary" />
+                        <label for="remember" class="ml-2 text-sm text-gray-900 dark:text-white">Lembrar-me</label>
                     </div>
-
                     <a href="#" class="text-sm text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
                         Esqueceu a senha?
                     </a>
                 </div>
 
-                <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors dark:focus:ring-offset-gray-800">
+                <!-- Login Button -->
+                <button type="submit" class="btn btn-primary w-full bg-indigo-600 hover:bg-indigo-500 text-white border-none">
                     Entrar
                 </button>
             </form>
 
+            <!-- Register Link -->
             <div class="mt-6 text-center">
-                <p class="text-sm text-gray-600 dark:text-gray-400">
+                <p class="text-gray-600 dark:text-gray-400">
                     Ainda não tem uma conta?
                     <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
                         Cadastre sua escola
@@ -76,13 +87,8 @@
         </div>
     </div>
 
-    <div id="notification" class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 hidden">
-        Login realizado com sucesso!
-    </div>
-
     <script src="src/js/auth.js"></script>
     <script src="src/js/darkMode.js"></script>
     <script src="src/js/custom.js"></script>
 </body>
-
 </html>

@@ -18,7 +18,18 @@
   --light-warning: #f59e0b;
   --light-info: #3b82f6;
   --light-shadow: rgba(0, 0, 0, 0.1);
-  
+  --light-menu-bg: #ffffff;
+  --light-menu-hover: #f3f4f6;
+  --light-menu-active: #4f46e5;
+  --light-menu-text: #111827;
+  --light-menu-text-hover: #4f46e5;
+  --light-menu-border: #e5e7eb;
+  --light-menu-shadow: rgba(0, 0, 0, 0.1);
+  --light-menu-tooltip-bg: #374151;
+  --light-menu-tooltip-text: #ffffff;
+  --light-mobile-menu-bg: rgba(255, 255, 255, 0.1);
+  --light-mobile-menu-border: #e5e7eb;
+
   /* Dark Theme Colors */
   --dark-primary-bg: #111827;
   --dark-secondary-bg: #1f2937;
@@ -37,6 +48,17 @@
   --dark-warning: #fcd34d;
   --dark-info: #60a5fa;
   --dark-shadow: rgba(0, 0, 0, 0.25);
+  --dark-menu-bg: #1f2937;
+  --dark-menu-hover: #374151;
+  --dark-menu-active: #818cf8;
+  --dark-menu-text: #f9fafb;
+  --dark-menu-text-hover: #818cf8;
+  --dark-menu-border: #374151;
+  --dark-menu-shadow: rgba(0, 0, 0, 0.25);
+  --dark-menu-tooltip-bg: #111827;
+  --dark-menu-tooltip-text: #f9fafb;
+  --dark-mobile-menu-bg: rgba(31, 41, 55, 0.1);
+  --dark-mobile-menu-border: #374151;
 
   /* Component-specific colors */
   --light-input-bg: #ffffff;
@@ -88,6 +110,17 @@
   --modal-bg: var(--light-modal-bg);
   --modal-overlay: var(--light-modal-overlay);
   --notification-bg: var(--light-notification-bg);
+  --menu-bg: var(--light-menu-bg);
+  --menu-hover: var(--light-menu-hover);
+  --menu-active: var(--light-menu-active);
+  --menu-text: var(--light-menu-text);
+  --menu-text-hover: var(--light-menu-text-hover);
+  --menu-border: var(--light-menu-border);
+  --menu-shadow: var(--light-menu-shadow);
+  --menu-tooltip-bg: var(--light-menu-tooltip-bg);
+  --menu-tooltip-text: var(--light-menu-tooltip-text);
+  --mobile-menu-bg: var(--light-mobile-menu-bg);
+  --mobile-menu-border: var(--light-mobile-menu-border);
 }
 
 /* Dark Theme Class */
@@ -116,11 +149,79 @@
   --dropdown-bg: var(--dark-dropdown-bg);
   --dropdown-hover: var(--dark-dropdown-hover);
   --modal-bg: var(--dark-modal-bg);
-  --modal-overlay: var(--dark-modal-overlay);
+  --modal-overlay: rgba(0, 0, 0, 0.7);
   --notification-bg: var(--dark-notification-bg);
+  --menu-bg: var(--dark-menu-bg);
+  --menu-hover: var(--dark-menu-hover);
+  --menu-active: var(--dark-menu-active);
+  --menu-text: var(--dark-menu-text);
+  --menu-text-hover: var(--dark-menu-text-hover);
+  --menu-border: var(--dark-menu-border);
+  --menu-shadow: var(--dark-menu-shadow);
+  --menu-tooltip-bg: var(--dark-menu-tooltip-bg);
+  --menu-tooltip-text: var(--dark-menu-tooltip-text);
+  --mobile-menu-bg: var(--dark-mobile-menu-bg);
+  --mobile-menu-border: var(--dark-menu-border);
 }
 
-/* Theme Transition */
+/* Responsivity Adjustments */
+@media (max-width: 768px) {
+  .drawer-side {
+    width: 100%;
+    background-color: var(--mobile-menu-bg);
+  }
+
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+
+  .menu a {
+    font-size: 0.875rem;
+    padding: 0.5rem;
+  }
+
+  .stats {
+    padding: 1rem;
+  }
+
+  .modal-box {
+    max-width: 90%;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .drawer-side {
+    padding: 1rem;
+  }
+
+  .stats {
+    flex-direction: column;
+  }
+
+  .menu a {
+    font-size: 0.75rem;
+  }
+
+  .modal-box {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+.theme-transition {
+  --menu-transition: background-color 0.3s ease,
+                    color 0.3s ease,
+                    border-color 0.3s ease,
+                    box-shadow 0.3s ease;
+}
+
+.theme-transition .menu,
+.theme-transition .menu-horizontal,
+.theme-transition .drawer-side {
+  transition: var(--menu-transition);
+}
+
 .theme-transition * {
   transition: background-color 0.3s ease,
               color 0.3s ease,
