@@ -1,143 +1,181 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // Mock Data
-  const mockRankingData = {
-      global: [
-          { id: 1, name: 'Python Masters', level: 35, xp: 15200, achievements: 25, challenges: 48, score: 18500 },
-          { id: 2, name: 'JavaScript Ninjas', level: 32, xp: 14800, achievements: 22, challenges: 45, score: 17900 },
-          { id: 3, name: 'Java Warriors', level: 30, xp: 13500, achievements: 20, challenges: 42, score: 16500 },
-          { id: 4, name: 'Ruby Rebels', level: 28, xp: 12800, achievements: 18, challenges: 38, score: 15200 },
-          { id: 5, name: 'C# Crusaders', level: 27, xp: 12200, achievements: 17, challenges: 36, score: 14800 },
-          { id: 6, name: 'PHP Phantoms', level: 25, xp: 11500, achievements: 15, challenges: 34, score: 13900 },
-          { id: 7, name: 'Go Guardians', level: 23, xp: 10800, achievements: 14, challenges: 32, score: 13200 },
-          { id: 8, name: 'Rust Rangers', level: 22, xp: 10200, achievements: 13, challenges: 30, score: 12600 },
-          { id: 9, name: 'Swift Sentinels', level: 20, xp: 9500, achievements: 12, challenges: 28, score: 11800 },
-          { id: 10, name: 'Kotlin Knights', level: 19, xp: 9000, achievements: 11, challenges: 26, score: 11200 }
-      ],
-      school: [],
-      guild: []
-  };
+// ranking.js
 
-  // Estado da Aplicação
-  let currentRanking = 'global';
-  let currentPage = 1;
-  const itemsPerPage = 10;
+// Dados de exemplo para os rankings
+const globalRankingData = [
+    { name: 'Escola A', level: 25, xp: 50000, achievements: 42, completedChallenges: 120, score: 8500 },
+    { name: 'Escola B', level: 22, xp: 40000, achievements: 36, completedChallenges: 100, score: 7800 },
+    { name: 'Escola C', level: 28, xp: 60000, achievements: 48, completedChallenges: 130, score: 9200 },
+    { name: 'Escola D', level: 20, xp: 35000, achievements: 30, completedChallenges: 90, score: 7000 },
+    { name: 'Escola E', level: 24, xp: 45000, achievements: 40, completedChallenges: 110, score: 8100 }
+];
 
-  // Elementos do DOM
-  const rankingTable = document.getElementById('rankingTable');
-  const currentPageSpan = document.getElementById('currentPage');
-  const firstPlaceElement = document.getElementById('firstPlace');
-  const secondPlaceElement = document.getElementById('secondPlace');
-  const thirdPlaceElement = document.getElementById('thirdPlace');
+const schoolRankingData = [
+    { name: 'Guilda A', members: 25, totalLevels: 550, totalXp: 800000, totalAchievements: 800, totalCompletedChallenges: 2000, totalScore: 150000 },
+    { name: 'Guilda B', members: 20, totalLevels: 450, totalXp: 650000, totalAchievements: 700, totalCompletedChallenges: 1800, totalScore: 120000 },
+    { name: 'Guilda C', members: 30, totalLevels: 650, totalXp: 950000, totalAchievements: 900, totalCompletedChallenges: 2200, totalScore: 180000 },
+    { name: 'Guilda D', members: 18, totalLevels: 400, totalXp: 550000, totalAchievements: 600, totalCompletedChallenges: 1600, totalScore: 100000 },
+    { name: 'Guilda E', members: 22, totalLevels: 500, totalXp: 700000, totalAchievements: 750, totalCompletedChallenges: 1900, totalScore: 130000 }
+];
 
-  // Funções de Utilidade
-  const formatNumber = (number) => {
-      return new Intl.NumberFormat('pt-BR').format(number);
-  };
+const guildRankingData = [
+    { name: 'Jogador A', level: 35, xp: 80000, achievements: 60, completedChallenges: 150, score: 12000 },
+    { name: 'Jogador B', level: 32, xp: 70000, achievements: 55, completedChallenges: 130, score: 10500 },
+    { name: 'Jogador C', level: 38, xp: 90000, achievements: 65, completedChallenges: 170, score: 13500 },
+    { name: 'Jogador D', level: 30, xp: 60000, achievements: 50, completedChallenges: 120, score: 9000 },
+    { name: 'Jogador E', level: 33, xp: 75000, achievements: 58, completedChallenges: 140, score: 11000 }
+];
 
-  const calculateTotalPages = (data) => {
-      return Math.ceil(data.length / itemsPerPage);
-  };
+// Função para renderizar o ranking global focado nas escolas
+function renderGlobalRanking(data) {
+    const rankingTable = document.getElementById('rankingTable');
+    rankingTable.innerHTML = '';
 
-  // Renderização
-  const renderPodium = (data) => {
-      if (data.length >= 3) {
-          firstPlaceElement.textContent = data[0].name;
-          secondPlaceElement.textContent = data[1].name;
-          thirdPlaceElement.textContent = data[2].name;
-      }
-  };
+    data.forEach((player, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${player.name}</td>
+            <td>${player.level}</td>
+            <td>${player.xp}</td>
+            <td>${player.achievements}</td>
+            <td>${player.completedChallenges}</td>
+            <td>${player.score}</td>
+        `;
+        rankingTable.appendChild(row);
+    });
+}
 
-  const renderRankingTable = (data) => {
-      const startIndex = (currentPage - 1) * itemsPerPage;
-      const endIndex = startIndex + itemsPerPage;
-      const pageData = data.slice(startIndex, endIndex);
+// Função para renderizar o ranking da escola focado nas guildas
+function renderSchoolRanking(data) {
+    const rankingTable = document.getElementById('rankingTable');
+    rankingTable.innerHTML = '';
 
-      const tbody = rankingTable.querySelector('tbody');
-      tbody.innerHTML = pageData.map((item, index) => `
-          <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 ${index < 3 ? 'font-bold' : ''}">
-              <td class="text-gray-900 dark:text-white">
-                  <div class="flex items-center">
-                      <span class="text-lg mr-2">${startIndex + index + 1}º</span>
-                      ${index < 3 ? getMedalIcon(index) : ''}
-                  </div>
-              </td>
-              <td class="text-gray-900 dark:text-white">${item.name}</td>
-              <td class="text-gray-900 dark:text-white">
-                  <div class="flex items-center">
-                      <span class="level-badge mr-2">${item.level}</span>
-                  </div>
-              </td>
-              <td class="text-gray-900 dark:text-white">${formatNumber(item.xp)}</td>
-              <td class="text-gray-900 dark:text-white">${formatNumber(item.achievements)}</td>
-              <td class="text-gray-900 dark:text-white">${formatNumber(item.challenges)}</td>
-              <td class="text-gray-900 dark:text-white font-bold">${formatNumber(item.score)}</td>
-          </tr>
-      `).join('');
+    data.forEach((guild, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${guild.name}</td>
+            <td>${guild.members}</td>
+            <td>${guild.totalLevels}</td>
+            <td>${guild.totalXp}</td>
+            <td>${guild.totalAchievements}</td>
+            <td>${guild.totalCompletedChallenges}</td>
+            <td>${guild.totalScore}</td>
+        `;
+        rankingTable.appendChild(row);
+    });
+}
 
-      currentPageSpan.textContent = currentPage;
-  };
+// Função para renderizar o ranking da guilda focado nos membros da guilda top 1
+function renderGuildRanking(data) {
+    const rankingTable = document.getElementById('rankingTable');
+    rankingTable.innerHTML = '';
 
-  const getMedalIcon = (position) => {
-      const colors = ['text-yellow-500', 'text-gray-400', 'text-amber-600'];
-      return `
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ${colors[position]}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-          </svg>
-      `;
-  };
+    data.forEach((player, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${player.name}</td>
+            <td>${player.level}</td>
+            <td>${player.xp}</td>
+            <td>${player.achievements}</td>
+            <td>${player.completedChallenges}</td>
+            <td>${player.score}</td>
+        `;
+        rankingTable.appendChild(row);
+    });
+}
 
-  // Event Handlers
-  window.switchRanking = (type) => {
-      currentRanking = type;
-      currentPage = 1;
-      
-      // Atualizar tabs
-      document.querySelectorAll('.tab').forEach(tab => {
-          tab.classList.remove('tab-active');
-          if (tab.textContent.toLowerCase().includes(type)) {
-              tab.classList.add('tab-active');
-          }
-      });
+// Função para criar a seção de classificação completa
+function createRankingSection() {
+    const rankingContainer = document.createElement('div');
+    rankingContainer.className = 'bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6';
 
-      updateRanking();
-  };
+    const headerContainer = document.createElement('div');
+    headerContainer.className = 'flex justify-between items-center mb-6';
 
-  window.changePage = (direction) => {
-      const totalPages = calculateTotalPages(mockRankingData[currentRanking]);
-      
-      if (direction === 'prev' && currentPage > 1) {
-          currentPage--;
-      } else if (direction === 'next' && currentPage < totalPages) {
-          currentPage++;
-      }
+    const header = document.createElement('h2');
+    header.className = 'text-xl font-bold text-gray-900 dark:text-white';
+    header.textContent = 'Classificação Completa';
+    headerContainer.appendChild(header);
 
-      renderRankingTable(mockRankingData[currentRanking]);
-  };
+    const tableContainer = document.createElement('div');
+    tableContainer.className = 'overflow-x-auto';
 
-  const handlePeriodFilter = () => {
-      const periodFilter = document.getElementById('periodFilter');
-      periodFilter.addEventListener('change', () => {
-          // Implementar lógica de filtro por período
-          updateRanking();
-      });
-  };
+    const table = document.createElement('table');
+    table.className = 'table w-full';
 
-  // Atualização do Ranking
-  const updateRanking = () => {
-      const data = mockRankingData[currentRanking];
-      renderPodium(data);
-      renderRankingTable(data);
-  };
+    const thead = document.createElement('thead');
+    const theadRow = document.createElement('tr');
+    theadRow.innerHTML = `
+        <th class="text-gray-900 dark:text-white">Posição</th>
+        <th class="text-gray-900 dark:text-white">Nome</th>
+        <th class="text-gray-900 dark:text-white">Nível</th>
+        <th class="text-gray-900 dark:text-white">XP</th>
+        <th class="text-gray-900 dark:text-white">Conquistas</th>
+        <th class="text-gray-900 dark:text-white">Desafios Concluídos</th>
+        <th class="text-gray-900 dark:text-white">Pontuação</th>
+        <th class="text-gray-900 dark:text-white" style="display: none;">Pontuação Total</th>
+    `;
 
-  // Inicialização
-  const init = () => {
-      // Gerar dados mock para escola e guilda
-      mockRankingData.school = mockRankingData.global.map(item => ({...item})).sort(() => Math.random() - 0.5);
-      mockRankingData.guild = mockRankingData.global.map(item => ({...item})).sort(() => Math.random() - 0.5);
+    thead.appendChild(theadRow);
+    table.appendChild(thead);
 
-      handlePeriodFilter();
-      updateRanking();
-  };
+    const tbody = document.createElement('tbody');
+    tbody.id = 'rankingTable';
+    table.appendChild(tbody);
 
-  init();
-});
+    tableContainer.appendChild(table);
+    rankingContainer.appendChild(headerContainer);
+    rankingContainer.appendChild(tableContainer);
+
+    return rankingContainer;
+}
+
+// Função para alternar entre os diferentes rankings
+function switchRanking(type) {
+    const headers = document.querySelectorAll('thead th');
+    const rankingTable = document.getElementById('rankingTable');
+
+    // Limpar a tabela
+    rankingTable.innerHTML = '';
+
+    switch (type) {
+        case 'global':
+            headers[2].textContent = 'Nível';
+            headers[3].textContent = 'XP';
+            headers[4].textContent = 'Conquistas';
+            headers[5].textContent = 'Desafios Concluídos';
+            headers[6].textContent = 'Pontuação';
+            headers[7].style.display = 'none';
+            renderGlobalRanking(globalRankingData);
+            break;
+        case 'school':
+            headers[2].textContent = 'Membros';
+            headers[3].textContent = 'Total de Níveis';
+            headers[4].textContent = 'Total de XP';
+            headers[5].textContent = 'Total de Conquistas';
+            headers[6].textContent = 'Total de Desafios Concluídos';
+            headers[7].style.display = '';
+            headers[7].textContent = 'Pontuação Total';
+            renderSchoolRanking(schoolRankingData);
+            break;
+        case 'guild':
+            headers[2].textContent = 'Nível';
+            headers[3].textContent = 'XP';
+            headers[4].textContent = 'Conquistas';
+            headers[5].textContent = 'Desafios Concluídos';
+            headers[6].textContent = 'Pontuação';
+            headers[7].style.display = 'none';
+            renderGuildRanking(guildRankingData);
+            break;
+        default:
+            break;
+    }
+}
+
+// Adicionar a seção de classificação completa ao DOM
+const mainContent = document.querySelector('.container.mx-auto.px-6');
+mainContent.appendChild(createRankingSection());
+
+

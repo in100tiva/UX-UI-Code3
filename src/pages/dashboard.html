@@ -12,204 +12,174 @@
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900 min-h-screen">
-    <!-- Success Notification -->
     <div id="notification" class="hidden fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50">
         <span id="notificationMessage"></span>
     </div>
 
-    <div class="drawer lg:drawer-open">
-        <input id="main-drawer" type="checkbox" class="drawer-toggle" />
-
-        <div class="drawer-content flex flex-col">
-            <!-- Navbar -->
-            <div class="navbar bg-white dark:bg-gray-800 shadow-lg px-4 sm:px-6">
-                <div class="flex-none lg:hidden">
-                    <label for="main-drawer" class="btn btn-square btn-ghost">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+    <!-- New Horizontal Navigation com melhor contraste -->
+    <div class="navbar bg-white dark:bg-gray-800 shadow-lg px-4 sm:px-6 mb-8">
+        <div class="flex-1">
+            <h1 class="text-xl font-bold text-gray-900 dark:text-white">School Gaming Platform</h1>
+        </div>
+        <div class="flex-none">
+            <ul class="menu menu-horizontal px-1 gap-2">
+                <li>
+                    <a href="dashboard.html" class="flex items-center justify-center w-14 h-14 active tooltip tooltip-bottom hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-100" data-tip="Dashboard">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                         </svg>
-                    </label>
-                </div>
-                <div class="flex-1 px-2">
-                    <h1 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">Dashboard da Escola</h1>
-                </div>
-                <div class="flex-none gap-2">
-                    <button id="themeToggle" class="btn btn-ghost btn-circle">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden dark:block text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </a>
+                </li>
+                <li>
+                    <a href="guilds.html" class="flex items-center justify-center w-14 h-14 tooltip tooltip-bottom hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-100" data-tip="Guildas">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                         </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 block dark:hidden text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </a>
+                </li>
+                <li>
+                    <a href="challenges.html" class="flex items-center justify-center w-14 h-14 tooltip tooltip-bottom hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-100" data-tip="Desafios">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                         </svg>
-                    </button>
-                    <div class="dropdown dropdown-end">
-                        <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-                            <div class="w-10 rounded-full">
-                                <img src="/api/placeholder/40/40" alt="profile" />
-                            </div>
-                        </label>
-                        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white dark:bg-gray-800 rounded-box w-40">
-                            <li><a class="text-gray-900 dark:text-white">Perfil</a></li>
-                            <li><a class="text-gray-900 dark:text-white">Configurações</a></li>
-                            <li><a onclick="logout()" class="text-red-600 dark:text-red-400">Logout</a></li>
-                        </ul>
+                    </a>
+                </li>
+                <li>
+                    <a href="ranking.html" class="flex items-center justify-center w-14 h-14 tooltip tooltip-bottom hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-100" data-tip="Ranking">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="rewards.html" class="flex items-center justify-center w-14 h-14 tooltip tooltip-bottom hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-100" data-tip="Recompensas">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+            <button id="themeToggle" class="btn btn-ghost btn-circle ml-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 hidden dark:block text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 block dark:hidden text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+            </button>
+            <div class="dropdown dropdown-end ml-2">
+                <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+                    <div class="w-10 rounded-full">
+                        <img src="/api/placeholder/40/40" alt="profile" />
                     </div>
+                </label>
+                <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 dark:bg-gray-800 rounded-box w-52">
+                    <li><a class="text-gray-900 dark:text-gray-100">Perfil<span class="badge badge-sm badge-primary">Novo</span></a></li>
+                    <li><a class="text-gray-900 dark:text-gray-100">Configurações</a></li>
+                    <li><a onclick="logout()" class="text-error">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="p-4 sm:p-6 md:p-8">
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div class="stats shadow bg-white dark:bg-gray-800 w-full mb-4">
+                <div class="stat">
+                    <div class="stat-title text-gray-600 dark:text-gray-400">Total de Guildas</div>
+                    <div class="stat-value text-indigo-600 dark:text-indigo-400">12</div>
+                    <div class="stat-desc text-gray-600 dark:text-gray-400">↗︎ 2 (últimos 30 dias)</div>
                 </div>
             </div>
 
-            <!-- Main Content -->
-            <div class="p-4 sm:p-6 md:p-8">
-                <!-- Stats Cards -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <div class="stats shadow bg-white dark:bg-gray-800 w-full mb-4">
-                        <div class="stat">
-                            <div class="stat-title text-gray-600 dark:text-gray-400">Total de Guildas</div>
-                            <div class="stat-value text-indigo-600 dark:text-indigo-400">12</div>
-                            <div class="stat-desc text-gray-600 dark:text-gray-400">↗︎ 2 (últimos 30 dias)</div>
-                        </div>
-                    </div>
-
-                    <div class="stats shadow bg-white dark:bg-gray-800 w-full mb-4">
-                        <div class="stat">
-                            <div class="stat-title text-gray-600 dark:text-gray-400">Alunos Ativos</div>
-                            <div class="stat-value text-indigo-600 dark:text-indigo-400">245</div>
-                            <div class="stat-desc text-gray-600 dark:text-gray-400">↗︎ 15 (últimos 30 dias)</div>
-                        </div>
-                    </div>
-
-                    <div class="stats shadow bg-white dark:bg-gray-800 w-full mb-4">
-                        <div class="stat">
-                            <div class="stat-title text-gray-600 dark:text-gray-400">Ranking Global</div>
-                            <div class="stat-value text-emerald-600 dark:text-emerald-400">#5</div>
-                            <div class="stat-desc text-gray-600 dark:text-gray-400">↗︎ 2 posições</div>
-                        </div>
-                    </div>
-
-                    <div class="stats shadow bg-white dark:bg-gray-800 w-full mb-4">
-                        <div class="stat">
-                            <div class="stat-title text-gray-600 dark:text-gray-400">XP Total</div>
-                            <div class="stat-value text-purple-600 dark:text-purple-400">45.6K</div>
-                            <div class="stat-desc text-gray-600 dark:text-gray-400">↗︎ 12K (último mês)</div>
-                        </div>
-                    </div>
-
+            <div class="stats shadow bg-white dark:bg-gray-800 w-full mb-4">
+                <div class="stat">
+                    <div class="stat-title text-gray-600 dark:text-gray-400">Alunos Ativos</div>
+                    <div class="stat-value text-indigo-600 dark:text-indigo-400">245</div>
+                    <div class="stat-desc text-gray-600 dark:text-gray-400">↗︎ 15 (últimos 30 dias)</div>
                 </div>
+            </div>
 
-                <!-- Main Grid -->
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-                    <!-- Left Column -->
-                    <div class="lg:col-span-2 space-y-4">
-                        <!-- Guilds Table -->
-                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-6">
-                            <div class="flex justify-between items-center mb-4">
-                                <h2 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">Top Guildas</h2>
-                                <label for="createGuildModal" class="btn bg-indigo-600 hover:bg-indigo-500 text-white border-none">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                                    </svg>
-                                    Criar Guilda
-                                </label>
-                            </div>
-                            <div class="overflow-x-auto sm:rounded-lg">
-                                <table class="table w-full text-sm">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-gray-900 dark:text-white">Guilda</th>
-                                            <th class="text-gray-900 dark:text-white">Nível</th>
-                                            <th class="text-gray-900 dark:text-white">XP</th>
-                                            <th class="text-gray-900 dark:text-white">Membros</th>
-                                            <th class="text-gray-900 dark:text-white">Status</th>
-                                            <th class="text-gray-900 dark:text-white">Código de Acesso</th>
-                                            <th class="text-gray-900 dark:text-white">Ações</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <!-- Table content will be dynamically populated -->
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <!-- Recent Activities -->
-                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-6">
-                            <h2 class="text-lg sm:text-xl font-bold mb-4 text-gray-900 dark:text-white">Atividades Recentes</h2>
-                            <div class="space-y-4" id="recentActivities">
-                                <!-- Activities will be dynamically populated -->
-                            </div>
-                        </div>
-                    </div>
+            <div class="stats shadow bg-white dark:bg-gray-800 w-full mb-4">
+                <div class="stat">
+                    <div class="stat-title text-gray-600 dark:text-gray-400">Ranking Global</div>
+                    <div class="stat-value text-emerald-600 dark:text-emerald-400">#5</div>
+                    <div class="stat-desc text-gray-600 dark:text-gray-400">↗︎ 2 posições</div>
+                </div>
+            </div>
 
-                    <!-- Right Column -->
-                    <div class="space-y-4">
-                        <!-- Upcoming Events -->
-                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-6">
-                            <h2 class="text-lg sm:text-xl font-bold mb-4 text-gray-900 dark:text-white">Próximos Eventos</h2>
-                            <div class="space-y-4" id="upcomingEvents">
-                                <!-- Events will be dynamically populated -->
-                            </div>
-                        </div>
-
-                        <!-- Recent Achievements -->
-                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-6">
-                            <h2 class="text-lg sm:text-xl font-bold mb-4 text-gray-900 dark:text-white">Conquistas Recentes</h2>
-                            <div class="grid grid-cols-3 gap-2 sm:gap-4" id="recentAchievements">
-                                <!-- Achievements will be dynamically populated -->
-                            </div>
-                        </div>
-                    </div>
+            <div class="stats shadow bg-white dark:bg-gray-800 w-full mb-4">
+                <div class="stat">
+                    <div class="stat-title text-gray-600 dark:text-gray-400">XP Total</div>
+                    <div class="stat-value text-purple-600 dark:text-purple-400">45.6K</div>
+                    <div class="stat-desc text-gray-600 dark:text-gray-400">↗︎ 12K (último mês)</div>
                 </div>
             </div>
         </div>
 
-        <!-- Sidebar -->
-        <div class="drawer-side">
-            <label for="main-drawer" class="drawer-overlay"></label>
-            <aside class="bg-white dark:bg-gray-800 w-64 sm:w-52 border-r">
-                <div class="p-4">
-                    <h2 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4">School Gaming Platform</h2>
-                    <ul class="menu p-0 space-y-2">
-                        <li>
-                            <a href="dashboard.html" class="flex items-center text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                                </svg>
-                                Dashboard
-                            </a>
-                        </li>
-                        <li>
-                            <a href="guilds.html" class="flex items-center text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                                </svg>
-                                Guildas
-                            </a>
-                        </li>
-                        <li>
-                            <a href="challenges.html" class="flex items-center text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                                </svg>
-                                Desafios
-                            </a>
-                        </li>
-                        <li>
-                            <a href="ranking.html" class="flex items-center text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                                </svg>
-                                Ranking
-                            </a>
-                        </li>
-                        <li>
-                            <a href="rewards.html" class="flex items-center text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
-                                </svg>
-                                Recompensas
-                            </a>
-                        </li>
-                    </ul>
+        <!-- Main Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <!-- Left Column -->
+            <div class="lg:col-span-2 space-y-4">
+                <!-- Guilds Table -->
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">Top Guildas</h2>
+                        <label for="createGuildModal" class="btn bg-indigo-600 hover:bg-indigo-500 text-white border-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
+                            Criar Guilda
+                        </label>
+                    </div>
+                    <div class="overflow-x-auto sm:rounded-lg">
+                        <table class="table w-full text-sm">
+                            <thead>
+                                <tr>
+                                    <th class="text-gray-900 dark:text-white">Guilda</th>
+                                    <th class="text-gray-900 dark:text-white">Nível</th>
+                                    <th class="text-gray-900 dark:text-white">XP</th>
+                                    <th class="text-gray-900 dark:text-white">Membros</th>
+                                    <th class="text-gray-900 dark:text-white">Status</th>
+                                    <th class="text-gray-900 dark:text-white">Código de Acesso</th>
+                                    <th class="text-gray-900 dark:text-white">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Table content will be dynamically populated -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </aside>
+                <!-- Recent Activities -->
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-6">
+                    <h2 class="text-lg sm:text-xl font-bold mb-4 text-gray-900 dark:text-white">Atividades Recentes</h2>
+                    <div class="space-y-4" id="recentActivities">
+                        <!-- Activities will be dynamically populated -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="space-y-4">
+                <!-- Upcoming Events -->
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-6">
+                    <h2 class="text-lg sm:text-xl font-bold mb-4 text-gray-900 dark:text-white">Próximos Eventos</h2>
+                    <div class="space-y-4" id="upcomingEvents">
+                        <!-- Events will be dynamically populated -->
+                    </div>
+                </div>
+
+                <!-- Recent Achievements -->
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-6">
+                    <h2 class="text-lg sm:text-xl font-bold mb-4 text-gray-900 dark:text-white">Conquistas Recentes</h2>
+                    <div class="grid grid-cols-3 gap-2 sm:gap-4" id="recentAchievements">
+                        <!-- Achievements will be dynamically populated -->
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
