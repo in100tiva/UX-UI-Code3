@@ -10,16 +10,17 @@
     <link rel="stylesheet" href="../styles/theme.css">
 </head>
 <body class="bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <!-- Notificação -->
     <div id="notification" class="hidden fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50">
         <span id="notificationMessage"></span>
     </div>
 
-    <!-- New Horizontal Navigation -->
+    <!-- Navbar -->
     <div class="navbar bg-white dark:bg-gray-800 shadow-lg px-4 sm:px-6 mb-8">
         <div class="flex-1">
             <h1 class="text-xl font-bold text-gray-900 dark:text-white">School Gaming Platform</h1>
         </div>
-        <div class="flex-none">
+        <div class="flex-none gap-2">
             <ul class="menu menu-horizontal px-1 gap-2">
                 <li>
                     <a href="dashboard.html" class="flex items-center justify-center w-14 h-14 tooltip tooltip-bottom hover:bg-gray-100 dark:hover:bg-gray-700 dark:text-gray-100" data-tip="Dashboard">
@@ -57,7 +58,9 @@
                     </a>
                 </li>
             </ul>
-            <button id="themeToggle" class="btn btn-ghost btn-circle ml-2">
+
+            <!-- Botão de Tema -->
+            <button id="themeToggle" class="btn btn-ghost btn-circle">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 hidden dark:block text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
@@ -65,14 +68,21 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                 </svg>
             </button>
-            <div class="dropdown dropdown-end ml-2">
+
+            <!-- Dropdown de Perfil -->
+            <div class="dropdown dropdown-end">
                 <label tabindex="0" class="btn btn-ghost btn-circle avatar">
                     <div class="w-10 rounded-full">
                         <img src="/api/placeholder/40/40" alt="profile" />
                     </div>
                 </label>
                 <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 dark:bg-gray-800 rounded-box w-52">
-                    <li><a class="text-gray-900 dark:text-gray-100">Perfil<span class="badge badge-sm badge-primary">Novo</span></a></li>
+                    <li>
+                        <a class="text-gray-900 dark:text-gray-100">
+                            Perfil
+                            <span class="badge badge-sm badge-primary">Novo</span>
+                        </a>
+                    </li>
                     <li><a class="text-gray-900 dark:text-gray-100">Configurações</a></li>
                     <li><a onclick="logout()" class="text-error">Logout</a></li>
                 </ul>
@@ -80,61 +90,120 @@
         </div>
     </div>
 
-    <!-- Main Content -->
-    <div class="container mx-auto px-6">
-        <!-- Updated Ranking Tabs -->
-        <div class="tabs tabs-boxed bg-white dark:bg-gray-800 mb-6 p-2 rounded-lg shadow-md">
-            <a class="tab tab-lg flex-1 text-center transition-all duration-200 ease-in-out bg-primary text-white hover:bg-primary-focus" onclick="switchRanking('global')">Ranking Global</a>
-            <a class="tab tab-lg flex-1 text-center transition-all duration-200 ease-in-out bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600" onclick="switchRanking('school')">Ranking da Escola</a>
-            <a class="tab tab-lg flex-1 text-center transition-all duration-200 ease-in-out bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600" onclick="switchRanking('guild')">Ranking da Guilda</a>
+    <!-- Conteúdo Principal -->
+    <div class="container mx-auto px-4 py-8">
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-indigo-100 dark:bg-indigo-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600 dark:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <h3 class="text-gray-500 dark:text-gray-400 text-sm font-medium">Posição Global</h3>
+                        <p class="text-2xl font-bold text-gray-900 dark:text-white">#28</p>
+                        <p class="text-green-600 dark:text-green-400 text-sm">↑ 2 posições</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-purple-100 dark:bg-purple-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <h3 class="text-gray-500 dark:text-gray-400 text-sm font-medium">XP Total</h3>
+                        <p class="text-2xl font-bold text-gray-900 dark:text-white">50.2K</p>
+                        <p class="text-green-600 dark:text-green-400 text-sm">+2.3K esta semana</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-green-100 dark:bg-green-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <h3 class="text-gray-500 dark:text-gray-400 text-sm font-medium">Desafios</h3>
+                        <p class="text-2xl font-bold text-gray-900 dark:text-white">156</p>
+                        <p class="text-green-600 dark:text-green-400 text-sm">85% completados</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-yellow-100 dark:bg-yellow-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-600 dark:text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                        </svg>
+                    </div>
+                    <div class="ml-4">
+                        <h3 class="text-gray-500 dark:text-gray-400 text-sm font-medium">Conquistas</h3>
+                        <p class="text-2xl font-bold text-gray-900 dark:text-white">42</p>
+                        <p class="text-green-600 dark:text-green-400 text-sm">+3 este mês</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Podium -->
-        <div id="topPodium" class="flex justify-center items-end mb-12 gap-4">
-            <!-- Second Place -->
-            <div class="flex flex-col items-center">
-                <div class="avatar mb-4">
-                    <div class="w-20 h-20 rounded-full ring ring-secondary">
-                        <img src="/api/placeholder/80/80" alt="2º Lugar" />
-                    </div>
-                </div>
-                <div class="text-center">
-                    <div class="text-xl font-bold text-gray-900 dark:text-white">2º</div>
-                    <div id="secondPlace" class="text-sm text-gray-600 dark:text-gray-400"></div>
-                </div>
-                <div class="h-32 w-24 bg-gray-200 dark:bg-gray-700 rounded-t-lg"></div>
-            </div>
+        <!-- Filtros de Ranking -->
+        <div class="flex flex-col md:flex-row gap-4 mb-8">
+            <button onclick="switchRanking('global')" class="btn btn-lg flex-1 bg-indigo-600 hover:bg-indigo-700 text-white border-none shadow-lg transform transition-all duration-200 hover:scale-105">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Ranking Global
+            </button>
+            <button onclick="switchRanking('school')" class="btn btn-lg flex-1 bg-purple-600 hover:bg-purple-700 text-white border-none shadow-lg transform transition-all duration-200 hover:scale-105">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+                Ranking da Escola
+            </button>
+            <button onclick="switchRanking('guild')" class="btn btn-lg flex-1 bg-emerald-600 hover:bg-emerald-700 text-white border-none shadow-lg transform transition-all duration-200 hover:scale-105">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                Ranking da Guilda
+            </button>
+        </div>
 
-            <!-- First Place -->
-            <div class="flex flex-col items-center">
-                <div class="avatar mb-4">
-                    <div class="w-24 h-24 rounded-full ring ring-primary ring-offset-2">
-                        <img src="/api/placeholder/96/96" alt="1º Lugar" />
-                    </div>
-                </div>
-                <div class="text-center">
-                    <div class="text-2xl font-bold text-primary">1º</div>
-                    <div id="firstPlace" class="text-sm text-gray-600 dark:text-gray-400"></div>
-                </div>
-                <div class="h-40 w-24 bg-primary dark:bg-indigo-600 rounded-t-lg"></div>
+        <!-- Tabela de Ranking -->
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden">
+            <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Classificação</h2>
             </div>
-
-            <!-- Third Place -->
-            <div class="flex flex-col items-center">
-                <div class="avatar mb-4">
-                    <div class="w-16 h-16 rounded-full ring ring-accent">
-                        <img src="/api/placeholder/64/64" alt="3º Lugar" />
-                    </div>
-                </div>
-                <div class="text-center">
-                    <div class="text-lg font-bold text-gray-900 dark:text-white">3º</div>
-                    <div id="thirdPlace" class="text-sm text-gray-600 dark:text-gray-400"></div>
-                </div>
-                <div class="h-24 w-24 bg-gray-300 dark:bg-gray-600 rounded-t-lg"></div>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-50 dark:bg-gray-700">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Posição</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Nome</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">XP</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Nível</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Conquistas</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Desafios</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Pontuação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rankingTable" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                        <!-- O conteúdo será injetado via JavaScript -->
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 
+    <!-- Scripts -->
     <script src="../js/darkMode.js"></script>
     <script src="../js/custom.js"></script>
     <script src="../js/ranking.js"></script>
