@@ -59,32 +59,28 @@
                 </li>
             </ul>
 
-            <!-- Botão de Tema -->
-            <button id="themeToggle" class="btn btn-ghost btn-circle">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 hidden dark:block text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 block dark:hidden text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                </svg>
-            </button>
-
             <!-- Dropdown de Perfil -->
-            <div class="dropdown dropdown-end">
-                <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+            <div class="dropdown dropdown-end ml-2">
+                <label tabindex="0" class="btn btn-ghost btn-circle avatar cursor-pointer">
                     <div class="w-10 rounded-full">
                         <img src="/api/placeholder/40/40" alt="profile" />
                     </div>
                 </label>
-                <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 dark:bg-gray-800 rounded-box w-52">
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                    <li><a class="text-gray-900 dark:text-gray-100">Perfil <span class="badge badge-sm badge-primary">Novo</span></a></li>
+                    <li><a class="text-gray-900 dark:text-gray-100">Configurações</a></li>
                     <li>
-                        <a class="text-gray-900 dark:text-gray-100">
-                            Perfil
-                            <span class="badge badge-sm badge-primary">Novo</span>
+                        <a id="themeToggle" class="text-gray-900 dark:text-gray-100 flex items-center justify-between">
+                            Tema
+                            <svg class="h-5 w-5 hidden dark:block text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                            <svg class="h-5 w-5 block dark:hidden text-gray-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                            </svg>
                         </a>
                     </li>
-                    <li><a class="text-gray-900 dark:text-gray-100">Configurações</a></li>
-                    <li><a onclick="logout()" class="text-error">Logout</a></li>
+                    <li><a class="text-error" onclick="logout()">Logout</a></li>
                 </ul>
             </div>
         </div>
